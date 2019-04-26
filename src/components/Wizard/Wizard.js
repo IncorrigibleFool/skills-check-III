@@ -1,62 +1,16 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
-import axios from 'axios';
+import {Route} from 'react-router-dom'
+import Step1 from './Steps/Step1'
+import Step2 from './Steps/Step2'
+import Step3 from './Steps/Step3'
 
 export default class Wizard extends Component{
-    constructor(){
-        super()
-
-        this.state = {
-            name: '',
-            address: '',
-            city: '',
-            state: '',
-            zipcode: ''
-        }
-
-        this.changeState = this.changeState.bind(this)
-        this.postHouse = this.postHouse.bind(this)
-    }
-
-    changeState(event){
-        const {value, name} = event.target
-        this.setState({
-            [name]: value
-        })
-    }
-
-    postHouse(){
-        const {name, address, city, state, zipcode} = this.state
-        axios.post('/api/houses', {name, address, city, state, zip: zipcode}).then(res => {
-            res.status(200)
-        }).catch(err => console.log(err))
-    }
-    
     render(){
         return(
             <div>
-                Wizard
-                <div>
-                    <input name='name' onChange={this.changeState} placeholder='Name'/>
-                </div>
-                <div>
-                    <input name='address' onChange={this.changeState} placeholder='Address'/>
-                </div>
-                <div>
-                    <input name='city' onChange={this.changeState} placeholder='City'/>
-                </div>
-                <div>
-                    <input name='state' onChange={this.changeState} placeholder='State'/>
-                </div>
-                <div>
-                    <input name='zipcode' onChange={this.changeState} placeholder='Zipcode'/>
-                </div>
-                <Link to={'/'}>
-                    <button onClick={this.postHouse}>Complete</button>
-                </Link>
-                <Link to={'/'}>
-                    <button>Cancel</button>
-                </Link>
+                <Route component={Step1} path='/wizard/step1'/>
+                <Route component={Step2} path='/wizard/step2'/>
+                <Route component={Step3} path='/wizard/step3'/>
             </div>
         )
     }

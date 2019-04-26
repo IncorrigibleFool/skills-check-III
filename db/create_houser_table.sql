@@ -4,8 +4,5 @@ create table houser(
     address varchar(100),
     city varchar(100),
     state varchar(2),
-    zip int,
-    img text,
-    mortgage decimal,
-    rent decimal
+    zip int
 )

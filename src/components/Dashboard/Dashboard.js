@@ -14,7 +14,7 @@ export default class Dashboard extends Component{
         this.deleteHouse = this.deleteHouse.bind(this)
     }
 
-    componentDidMount(){
+    componentDidMount(){ 
         axios.get('/api/houses').then(res => {
             this.setState({
                 houses: res.data
@@ -51,14 +51,17 @@ export default class Dashboard extends Component{
                         address={house.address}
                         city={house.city}
                         state={house.state}
-                        zipcode={house.zip}
+                        zip={house.zip}
+                        img={house.img}
+                        mortgage={house.mortgage}
+                        rent={house.rent}
                         id={house.id}
                         delete={this.deleteHouse}
                         />
                     )
                 })}
                 <div>
-                    <Link to={'/wizard'}>
+                    <Link to={'/wizard/step1'}>
                         <button>Add New Property</button>
                     </Link>
                 </div>

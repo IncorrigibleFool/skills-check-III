@@ -19,7 +19,16 @@ export default class House extends Component{
                         State: {this.props.state}
                     </div>
                     <div>
-                        Zip: {this.props.zipcode}
+                        Zip Code: {this.props.zip}
+                    </div>
+                    <div>
+                        <img src={this.props.img} alt='undefined url'/>
+                    </div>
+                    <div>
+                        Monthly Mortgage: {this.props.mortgage}
+                    </div>
+                    <div>
+                        Desired Rent: {this.props.rent}
                     </div>
                 </div>
                 <button onClick={() => this.props.delete(this.props.id)}>Delete</button>
